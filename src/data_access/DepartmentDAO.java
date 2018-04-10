@@ -12,7 +12,7 @@ import transfer_object.Department;
  */
 public interface DepartmentDAO {
 	/**
-	 * This method is used to store a list of the departments
+	 * This method is used to retrieve a list of all departments.
 	 * @return List of generic type <Departments>
 	 */
 	public List<Department> getAllDepartments();
