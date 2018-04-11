@@ -4,7 +4,12 @@ import java.sql.Date;
 import java.util.List;
 
 import transfer_object.DepartmentManager;
-
+/**
+ * This class implements the {@link DepartmentManagerDAO} interface.
+ * @author Shawn Pottle
+ * @author Polly Yum
+ * @author Aleksandar Krumov 
+ */
 public class DepartmentManagerDAOImp implements DepartmentManagerDAO {
 
 	@Override
