@@ -5,6 +5,12 @@ import java.util.List;
 
 import transferobjects.DepartmentManager;
 
+/**
+ * This class implements the {@link DepartmentManagerDAO} interface.
+ * @author Shawn Pottle
+ * @author Polly Yum
+ * @author Aleksandar Krumov 
+ */
 public class DepartmentManagerDAOImp implements DepartmentManagerDAO {
 
 	@Override
