@@ -1,4 +1,4 @@
-package transfer_object;
+package transferobjects;
 
 import java.sql.Date;
 

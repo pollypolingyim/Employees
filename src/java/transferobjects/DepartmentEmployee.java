@@ -1,9 +1,9 @@
-package transfer_object;
+package transferobjects;
 
 import java.sql.Date;
 
 public class DepartmentEmployee {
-	private  final int dept_no;
+	private final int dept_no;
 	private final int emp_no;
 	private Date from_date;
 	private Date to_date;

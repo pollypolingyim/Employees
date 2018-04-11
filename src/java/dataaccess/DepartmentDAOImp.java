@@ -1,15 +1,71 @@
 package dataaccess;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import transfer_object.Department;
+import transferobjects.Department;
 
 public class DepartmentDAOImp implements DepartmentDAO {
-
-	@Override
+    
+        private static final String GET_ALL_DEPARTMENTS = "SELECT dept_no, dept_name FROM departments ORDER BY dept_no";
+        private static final String INSERT_DEPARTMENTS = "INSERT INTO Courses (course_num, name) VALUES(?, ?)";
+        private static final String DELETE_DEPARTMENTS = "DELETE FROM Courses WHERE course_num = ?";
+        private static final String UPDATE_DEPARTMENTS = "UPDATE Courses SET name = ? WHERE course_num = ?";
+        //private static final String GET_BY_CODE_COURSES = "SELECT course_num, name FROM Courses WHERE name = ?";
+	
+        @Override
 	public List<Department> getAllDepartments() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Department> departments = Collections.EMPTY_LIST;
+                Department dept;
+                Connection con = null;
+                PreparedStatement pstmt = null;
+                ResultSet rs = null;
+                try{
+                    System.out.println("Connecting");
+                    DataSource ds = new DataSource();
+                    con = ds.createConnection();
+                    
+                    System.out.println("Connected");
+                    pstmt = con.prepareStatement( GET_ALL_DEPARTMENTS);
+                    rs = pstmt.executeQuery();
+                    departments = new ArrayList<>(100);
+                    while( rs.next()){
+                        dept = new Department(rs.getString("dept_no"),rs.getString("dept_name"));
+                        departments.add(dept);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(CourseDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+                } finally {
+                    try {
+                        if (rs != null) {
+                            rs.close();
+                        }
+                    } catch (SQLException ex) {
+                        System.out.println(ex.getMessage());
+                    }
+                    try {
+                        if (pstmt != null) {
+                            pstmt.close();
+                        }
+                    } catch (SQLException ex) {
+                        System.out.println(ex.getMessage());
+                    }
+                    try {
+                        if (con != null) {
+                            con.close();
+                        }
+                    } catch (SQLException ex) {
+                        System.out.println(ex.getMessage());
+                    }
+                }
+                return departments;
 	}
 
 	@Override

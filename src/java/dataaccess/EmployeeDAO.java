@@ -3,7 +3,7 @@ package dataaccess;
 import java.sql.Date;
 import java.util.List;
 
-import transfer_object.Employee;
+import transferobjects.Employee;
 /**
  * This is an interface for the Employee DAO
  * @author Shawn Pottle

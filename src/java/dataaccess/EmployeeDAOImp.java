@@ -3,7 +3,7 @@ package dataaccess;
 import java.sql.Date;
 import java.util.List;
 
-import transfer_object.Employee;
+import transferobjects.Employee;
 
 public class EmployeeDAOImp implements EmployeeDAO {
 

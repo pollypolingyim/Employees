@@ -22,7 +22,7 @@ public class DataSource {
         try {
             Context initCtx = new InitialContext();
             Context envCtx = (Context) initCtx.lookup("java:comp/env");
-            javax.sql.DataSource ds = (javax.sql.DataSource) envCtx.lookup("jdbc/Registrar");
+            javax.sql.DataSource ds = (javax.sql.DataSource) envCtx.lookup("jdbc/Employees");
             connection = ds.getConnection();
         } catch (NamingException | SQLException ex) {
             Logger.getLogger(DataSource.class.getName()).log(Level.SEVERE, null, ex);

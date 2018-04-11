@@ -3,7 +3,7 @@ package dataaccess;
 import java.sql.Date;
 import java.util.List;
 
-import transfer_object.DepartmentManager;
+import transferobjects.DepartmentManager;
 
 public class DepartmentManagerDAOImp implements DepartmentManagerDAO {
 

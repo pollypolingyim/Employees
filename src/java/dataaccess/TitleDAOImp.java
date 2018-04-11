@@ -3,7 +3,7 @@ package dataaccess;
 import java.sql.Date;
 import java.util.List;
 
-import transfer_object.Title;
+import transferobjects.Title;
 
 public class TitleDAOImp implements TitleDAO {
 

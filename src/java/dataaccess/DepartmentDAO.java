@@ -2,7 +2,7 @@ package dataaccess;
 
 import java.util.List;
 
-import transfer_object.Department;
+import transferobjects.Department;
 /**
  * This is an interface for the Department DAO
  * @author Shawn Pottle
@@ -26,6 +26,7 @@ public interface DepartmentDAO {
 	 * This method is used to update the department table.
 	 * @param dept_no of type integer
 	 * @param dept_name of type String
+         *  
 	 */
 	public void updateDepartment(int dept_no, String dept_name);
 	/**

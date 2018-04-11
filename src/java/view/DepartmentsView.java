@@ -5,7 +5,7 @@
  */
 package view;
 
-import business.CoursesLogic;
+import business.DepartmentLogic;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -13,7 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import transferobjects.Course;
+import transferobjects.Department;
 
 /**
  *
@@ -37,19 +37,19 @@ public class DepartmentsView extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Courses</title>");            
+            out.println("<title>Departments</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Courses View at " + request.getContextPath() + "</h1>");
-            CoursesLogic logic = new CoursesLogic();
-            List<Course> courses = logic.getAllCourses();
+            out.println("<h1>Departments View at " + request.getContextPath() + "</h1>");
+            DepartmentLogic logic = new DepartmentLogic();
+            List<Department> departments = logic.getAllDepartments();
             out.println("<table border=\"1\">");
             out.println("<tr>");
-            out.println("<td>Course Code</td>");
-            out.println("<td>Course Name</td>");
+            out.println("<td>Department Number</td>");
+            out.println("<td>Department Name</td>");
             out.println("</tr>");
-            for(Course course : courses){
-                out.printf("<tr><td>%s</td><td>%s</td></tr>", course.getCode(), course.getName());
+            for(Department dept : departments){
+                out.printf("<tr><td>%s</td><td>%s</td></tr>", dept.getDept_no(), dept.getDept_name());
             }
             out.println("</table>");
             out.println("</body>");

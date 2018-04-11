@@ -3,7 +3,7 @@ package dataaccess;
 import java.sql.Date;
 import java.util.List;
 
-import transfer_object.Salary;
+import transferobjects.Salary;
 /**
  * This is an interface for the Salary DAO
  * @author Shawn Pottle
