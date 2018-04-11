@@ -1,7 +1,7 @@
 package business;
 
-import data_access.DepartmentDAO;
-import data_access.DepartmentDAOImp;
+import dataaccess.DepartmentDAO;
+import dataaccess.DepartmentDAOImp;
 
 public class DepartmentLogic {
 	public static final int DEPARTMENT_NAME_MAX_LENGTH = 40;

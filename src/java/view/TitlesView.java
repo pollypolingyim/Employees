@@ -20,7 +20,7 @@ import transferobjects.Course;
  * @author Shariar Emami
  * @author Stanley Pieda
  */
-public class CoursesView extends HttpServlet {
+public class TitlesView extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
