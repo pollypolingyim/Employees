@@ -6,7 +6,7 @@ import transferobjects.Department;
 /**
  * This is an interface for the Department DAO
  * @author Shawn Pottle
- * @author Polly Yum
+ * @author Polly Yim
  * @author Aleksandar Krumov 
  *
  */
