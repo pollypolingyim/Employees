@@ -7,7 +7,7 @@ import transferobjects.Title;
 /**
  * This is an interface for the Title DAO
  * @author Shawn Pottle
- * @author Polly Yum
+ * @author Polly Yim
  * @author Aleksandar Krumov
  */
 public interface TitleDAO {
