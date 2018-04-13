@@ -7,7 +7,7 @@ import transferobjects.DepartmentManager;
 /**
  * This is an interface for the DepartmentManager DAO
  * @author Shawn Pottle
- * @author Polly Yum
+ * @author Polly Yim
  * @author Aleksandar Krumov
  */
 public interface DepartmentManagerDAO {
