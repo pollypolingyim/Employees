@@ -8,7 +8,7 @@ import transferobjects.DepartmentEmployee;
  * This class implements the {@link DepartmentEmployeeDAO} interface.
  *
  * @author Shawn Pottle
- * @author Polly Yum
+ * @author Polly Yim
  * @author Aleksandar Krumov
  */
 public class DepartmentEmployeeDAOImp implements DepartmentEmployeeDAO {
