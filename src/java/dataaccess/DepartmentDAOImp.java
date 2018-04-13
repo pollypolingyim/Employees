@@ -15,7 +15,7 @@ import transferobjects.Department;
 /**
  * This class implements the {@link DepartmentDAO} interface.
  * @author Shawn Pottle
- * @author Polly Yum
+ * @author Polly Yim
  * @author Aleksandar Krumov 
  *
  */
