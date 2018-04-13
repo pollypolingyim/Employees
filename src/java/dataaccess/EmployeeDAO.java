@@ -7,7 +7,7 @@ import transferobjects.Employee;
 /**
  * This is an interface for the Employee DAO
  * @author Shawn Pottle
- * @author Polly Yum
+ * @author Polly Yim
  * @author Aleksandar Krumov
  */
 public interface EmployeeDAO {
