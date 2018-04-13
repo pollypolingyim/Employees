@@ -8,7 +8,7 @@ import transferobjects.DepartmentManager;
 /**
  * This class implements the {@link DepartmentManagerDAO} interface.
  * @author Shawn Pottle
- * @author Polly Yum
+ * @author Polly Yim
  * @author Aleksandar Krumov 
  */
 public class DepartmentManagerDAOImp implements DepartmentManagerDAO {
@@ -30,7 +30,7 @@ public class DepartmentManagerDAOImp implements DepartmentManagerDAO {
      * @param emp_no of type integer
      * @param dept_no of type integer
      * @param from_date of type Date
-     * @param to_date of type date
+     * @param to_date of type Date
      */
 	@Override
 	public void addDepartmentManager(int emp_no, int dept_no, Date from_date, Date to_date) {
