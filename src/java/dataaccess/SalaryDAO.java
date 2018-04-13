@@ -7,7 +7,7 @@ import transferobjects.Salary;
 /**
  * This is an interface for the Salary DAO
  * @author Shawn Pottle
- * @author Polly Yum
+ * @author Polly Yim
  * @author Aleksandar Krumov
  */
 public interface SalaryDAO {
