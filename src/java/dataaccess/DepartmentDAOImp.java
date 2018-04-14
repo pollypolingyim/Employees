@@ -39,21 +39,17 @@ public class DepartmentDAOImp implements DepartmentDAO {
                 Connection con = null;
                 PreparedStatement pstmt = null;
                 ResultSet rs = null;
-                try{
-                    System.out.println("Connecting");
-                    DataSource ds = new DataSource();
-                    con = ds.createConnection();
-                    
-                    System.out.println("Connected");
+                try{;
+                    con = DataSource.getConnection();
                     pstmt = con.prepareStatement( GET_ALL_DEPARTMENTS);
                     rs = pstmt.executeQuery();
                     departments = new ArrayList<>(100);
                     while( rs.next()){
-                        dept = new Department(rs.getString("dept_no"),rs.getString("dept_name"));
+                        dept = new Department(rs.getString(Department.COL_DEPT_NO),rs.getString(Department.COL_DEPT_NAME));
                         departments.add(dept);
                     }
                 } catch (SQLException ex) {
-                    Logger.getLogger(CourseDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(DepartmentDAOImp.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
                     try {
                         if (rs != null) {
