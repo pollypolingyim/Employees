@@ -2,6 +2,7 @@ package dataaccess;
 
 import java.sql.Date;
 import java.util.List;
+import java.sql.ResultSet;
 
 import transferobjects.Employee;
 /**
@@ -25,7 +26,7 @@ public interface EmployeeDAO {
 	 * @param gender of type String
 	 * @param hire_date of reference type Date
 	 */
-	public void addEmployee(int emp_no, Date birth_date, String first_name, String last_name, String gender, Date hire_date);
+	public void addEmployee(Employee emp);
 	/**
 	 * This method is used to update the employee table,
 	 * @param emp_no of type integer
@@ -35,11 +36,18 @@ public interface EmployeeDAO {
 	 * @param gender of type String
 	 * @param hire_date of reference type Date
 	 */
-	public void updateEmployee(int emp_no, Date birth_date, String first_name, String last_name, String gender, Date hire_date);
+	public void updateEmployeeFirstName(Employee emp, String newFirstName);
+        
+        public void updateEmployeeLastName(Employee emp, String newLastName);
 	/**
 	 * This method is used to delete employee by employee number
 	 * @param emp_no of type integer
 	 */
-	public void deleteEmployee(int emp_no);
+	public void deleteEmployeeByID(int emp_no);
+        
+        
+        public ResultSet findEmployeeByName(String first_name, String last_name);
+        
+        public ResultSet findEmployeeByID(int emp_no);
 	//TODO: add deleteEmployeeBy...
 }

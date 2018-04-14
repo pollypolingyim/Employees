@@ -1,14 +1,18 @@
 package transferobjects;
 
 public class Department {
-	private final String dept_no;
+	private String dept_no;
 	private String dept_name;
+        private static int dept_counter;
 	
-	public Department(String dept_no, String dept_name) {
-		this.dept_no = dept_no;
+        public Department(){dept_no = Integer.toString(++dept_counter);}
+        
+	public Department(String dept_name) {
+		this.dept_no = Integer.toString(++dept_counter);
 		setDept_name(dept_name);
 		
 	}
+        
 
 	public String getDept_no() {
 		return dept_no;
@@ -17,6 +21,10 @@ public class Department {
 	public String getDept_name() {
 		return dept_name;
 	}
+        
+        public void setDept_no(String dept_no){
+            this.dept_no=dept_no;
+        }
 
 	public void setDept_name(String dept_name) {
 		this.dept_name = dept_name;

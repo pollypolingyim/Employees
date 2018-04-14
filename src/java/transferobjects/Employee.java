@@ -2,21 +2,24 @@ package transferobjects;
 import java.sql.Date;
 
 public class Employee {
-	private final int emp_no;
+	private Integer emp_no;
 	private Date birth_date;
 	private String first_name;
 	private String last_name;
 	@SuppressWarnings("unused")
 	private Gender gender;
 	private Date hire_date;
+        public static int emp_counter;
 	
 	private enum Gender {
 		MALE,
 		FEMALE;
 	}
+        
+        public Employee(){emp_no = ++emp_counter;}
 	
-	public Employee(int emp_no, Date birth_date, String first_name, String last_name, String gender, Date hire_date) {
-		this.emp_no = emp_no;
+	public Employee(Date birth_date, String first_name, String last_name, String gender, Date hire_date) {
+		this.emp_no = ++emp_counter;
 		setBirth_date(birth_date);
 		this.setFirst_name(first_name);
 		this.setLast_name(last_name);
@@ -24,9 +27,13 @@ public class Employee {
 		this.setHire_date(hire_date);
 	}
 
-	public int getEmp_no() {
+	public Integer getEmp_no() {
 		return emp_no;
 	}
+        
+        public void setEmp_no(int emp_no){
+            this.emp_no = emp_no;
+        }
 
 	public Date getBirth_date() {
 		return birth_date;
@@ -51,6 +58,10 @@ public class Employee {
 	public void setLast_name(String last_name) {
 		this.last_name = last_name;
 	}
+        
+        public Gender getGender(){
+            return gender;
+        }
 
 	public void setGender(String gender) {
 		if(gender.equals("M"))

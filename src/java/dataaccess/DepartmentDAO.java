@@ -1,6 +1,7 @@
 package dataaccess;
 
 import java.util.List;
+import java.sql.ResultSet;
 
 import transferobjects.Department;
 /**
@@ -21,14 +22,14 @@ public interface DepartmentDAO {
 	 * @param dept_no of type integer
 	 * @param dept_name of type String
 	 */
-	public void addDepartment(int dept_no, String dept_name);
+	public void addDepartment(Department department);
 	/**
 	 * This method is used to update the department table.
 	 * @param dept_no of type integer
 	 * @param dept_name of type String
          *  
 	 */
-	public void updateDepartment(int dept_no, String dept_name);
+	public void updateDepartment(Department department, String newDeptName);
 	/**
 	 * This method is used to delete departments by department number.
 	 * @param dept_no of type integer
@@ -39,4 +40,8 @@ public interface DepartmentDAO {
 	 * @param dept_name of type String
 	 */
 	public void deleteDepartmentByDeptName(String dept_name);
+        
+        public ResultSet getDepartmentByID (int dept_no);
+        
+        public ResultSet getDepartmentByName(String dept_name);
 }

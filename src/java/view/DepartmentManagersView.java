@@ -6,6 +6,7 @@
 package view;
 
 import business.CoursesLogic;
+import business.DepartmentEmployeeLogic;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import transferobjects.Course;
+import transferobjects.DepartmentEmployee;
 
 /**
  *
@@ -22,6 +24,7 @@ import transferobjects.Course;
  */
 public class DepartmentManagersView extends HttpServlet {
 
+ 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      *
@@ -37,19 +40,23 @@ public class DepartmentManagersView extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Courses</title>");            
+            out.println("<title>Department Managers</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Courses View at " + request.getContextPath() + "</h1>");
-            CoursesLogic logic = new CoursesLogic();
-            List<Course> courses = logic.getAllCourses();
+            out.println("<h1>Department Managers View at " + request.getContextPath() + "</h1>");
+            DepartmentEmployeeLogic logic = new DepartmentEmployeeLogic();
+            List<DepartmentEmployee> departmentEmployees = logic.getAllDepartmentEmployees();
             out.println("<table border=\"1\">");
             out.println("<tr>");
-            out.println("<td>Course Code</td>");
-            out.println("<td>Course Name</td>");
+            out.println("<td>Manager Number</td>");
+            out.println("<td>Department Number</td>");
+            out.println("<td>From Date</td>");
+            out.println("<td>To Date</td>");
             out.println("</tr>");
-            for(Course course : courses){
-                out.printf("<tr><td>%s</td><td>%s</td></tr>", course.getCode(), course.getName());
+            for(DepartmentEmployee departmentEmployee : departmentEmployees){
+                out.printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", departmentEmployee.getEmp_no(), 
+                        departmentEmployee.getDept_no(),departmentEmployee.getFrom_date(),
+                        departmentEmployee.getTo_date());
             }
             out.println("</table>");
             out.println("</body>");

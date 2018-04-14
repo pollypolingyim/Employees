@@ -2,6 +2,7 @@ package dataaccess;
 
 import java.sql.Date;
 import java.util.List;
+import java.sql.ResultSet;
 
 import transferobjects.DepartmentEmployee;
 	/**
@@ -15,7 +16,7 @@ public interface DepartmentEmployeeDAO {
 	 * This method is used to retrieve a list of all department employees.
 	 * @return List of generic type <DepartmentEmployee>
 	 */
-	public List<DepartmentEmployee> getAllDepartmentEmployee();
+	public List<DepartmentEmployee> getAllDepartmentEmployees();
 	/**
 	 * This method is used when adding a department employee.
 	 * @param emp_no of type integer
@@ -23,7 +24,7 @@ public interface DepartmentEmployeeDAO {
 	 * @param from_date of reference type Date
 	 * @param to_date of reference type Date
 	 */
-	public void addDeparmentEmployee(int emp_no, int dept_no, Date from_date, Date to_date);
+	public void addDepartmentEmployee(DepartmentEmployee departmentEmployee);
 	/**
 	 * This method is used to update the department employee table.
 	 * @param emp_no of type integer
@@ -31,7 +32,7 @@ public interface DepartmentEmployeeDAO {
 	 * @param from_date of reference type Date
 	 * @param to_date of reference type Date
 	 */
-	public void updateDepartmentEmployee(int emp_no, int dept_no, Date from_date, Date to_date);
+	public void updateDepartmentEmployeeFromDate(DepartmentEmployee departmentEmployee, Date newFromDate);
 	/**
 	 * This method is used to delete from the department employee table.
 	 * @param emp_no of type integer
@@ -39,6 +40,12 @@ public interface DepartmentEmployeeDAO {
 	 * @param from_date of reference type Date
 	 * @param to_date of reference type Date
 	 */
-	public void deleteDepartmentEmployee(int emp_no, int dept_no, Date from_date, Date to_date);
+        
+        public void updateDepartmentEmployeeToDate (DepartmentEmployee departmentEmployee, Date newToDate);
+	public void deleteDepartmentEmployee(DepartmentEmployee departmentEmployee);
+        
+        public ResultSet getDepartmentEmployeeByDeptID (int dept_no);
+        
+        public ResultSet getDepartmentEmployeeByEmpID(int emp_id);
 }
 

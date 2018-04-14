@@ -5,7 +5,7 @@
  */
 package view;
 
-import business.CoursesLogic;
+import business.TitleLogic;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -13,7 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import transferobjects.Course;
+import transferobjects.Title;
 
 /**
  *
@@ -37,19 +37,22 @@ public class TitlesView extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Courses</title>");            
+            out.println("<title>Titles</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Courses View at " + request.getContextPath() + "</h1>");
-            CoursesLogic logic = new CoursesLogic();
-            List<Course> courses = logic.getAllCourses();
+            out.println("<h1>Titles View at " + request.getContextPath() + "</h1>");
+            TitleLogic logic = new TitleLogic();
+            List<Title> titles = logic.getAllTitles();
             out.println("<table border=\"1\">");
             out.println("<tr>");
-            out.println("<td>Course Code</td>");
-            out.println("<td>Course Name</td>");
+            out.println("<td>Employee Number</td>");
+            out.println("<td>Title</td>");
+            out.println("<td>From Date</td>");
+            out.println("<td>To Date</td>");
             out.println("</tr>");
-            for(Course course : courses){
-                out.printf("<tr><td>%s</td><td>%s</td></tr>", course.getCode(), course.getName());
+            for(Title title : titles){
+                out.printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", title.getEmp_no(), 
+                        title.getTitle(), title.getFrom_date(), title.getTo_date());
             }
             out.println("</table>");
             out.println("</body>");
