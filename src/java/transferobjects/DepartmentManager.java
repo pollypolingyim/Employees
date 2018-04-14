@@ -1,11 +1,12 @@
 package transferobjects;
 
+import java.math.BigInteger;
 import java.sql.Date;
 import java.util.Objects;
 
 public class DepartmentManager {
 
-    String emp_no;
+    Integer emp_no;
     String dept_no;
     Date from_date;
     Date to_date;
@@ -15,7 +16,7 @@ public class DepartmentManager {
     public static String COL_FROM_DATE = "from_date";
     public static String COL_TO_DATE = "to_date";
             
-    public DepartmentManager(String emp_no, String dept_no, Date from_date, Date to_date) {
+    public DepartmentManager(int emp_no, String dept_no, Date from_date, Date to_date) {
         this.emp_no = emp_no;
         this.dept_no = dept_no;
         this.from_date = from_date;
@@ -23,11 +24,11 @@ public class DepartmentManager {
     }
 
     
-    public String getEmp_no() {
+    public int getEmp_no() {
         return emp_no;
     }
 
-    public void setEmp_no(String emp_no) {
+    public void setEmp_no(int emp_no) {
         this.emp_no = emp_no;
     }
 

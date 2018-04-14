@@ -5,7 +5,7 @@
  */
 package view;
 
-import business.CoursesLogic;
+import business.EmployeeLogic;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -13,7 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import transferobjects.Course;
+import transferobjects.Employee;
 
 /**
  *
@@ -37,19 +37,25 @@ public class EmployeesView extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Courses</title>");            
+            out.println("<title>Employees</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Courses View at " + request.getContextPath() + "</h1>");
-            CoursesLogic logic = new CoursesLogic();
-            List<Course> courses = logic.getAllCourses();
+            out.println("<h1>Employees View at " + request.getContextPath() + "</h1>");
+            EmployeeLogic logic = new EmployeeLogic();
+            List<Employee> employees = logic.getAllEmployees();
             out.println("<table border=\"1\">");
             out.println("<tr>");
-            out.println("<td>Course Code</td>");
-            out.println("<td>Course Name</td>");
+            out.println("<td>Employee Number</td>");
+            out.println("<td>Birth Date</td>");
+            out.println("<td>First Name</td>");
+            out.println("<td>Last Name</td>");
+            out.println("<td>Gender</td>");
+            out.println("<td>Hire Date</td>");
             out.println("</tr>");
-            for(Course course : courses){
-                out.printf("<tr><td>%s</td><td>%s</td></tr>", course.getCode(), course.getName());
+            for(Employee employee : employees){
+                out.printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", 
+                        employee.getEmp_no(), employee.getBirth_date(), employee.getFirst_name(),
+                        employee.getLast_name(),employee.getGender(), employee.getHire_date());
             }
             out.println("</table>");
             out.println("</body>");

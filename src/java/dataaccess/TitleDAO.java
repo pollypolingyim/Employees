@@ -2,6 +2,7 @@ package dataaccess;
 
 import java.sql.Date;
 import java.util.List;
+import java.sql.ResultSet;
 
 import transferobjects.Title;
 /**
@@ -16,13 +17,7 @@ public interface TitleDAO {
 	 * @return List of generic type <Title>
 	 */
 	public List<Title> getAllTitles();
-	/**
-	 * This method is used to add a title to the title table
-	 * @param emp_no of type integer
-	 * @param title of type String
-	 * @param from_date of reference type Date
-	 */
-	public void addTitle(int emp_no, String title, Date from_date);
+
 	/**
 	 * This method is used to add title to the Title table.
 	 * @param emp_no of type integer
@@ -30,7 +25,7 @@ public interface TitleDAO {
 	 * @param from_date of reference type Date
 	 * @param to_date of reference type Date
 	 */
-	public void addTitle(int emp_no, String title, Date from_date, Date to_date);
+	public void addTitle(Title title);
 	/**
 	 * This method is used to update a title in the title table.
 	 * @param emp_no of type integer
@@ -38,11 +33,15 @@ public interface TitleDAO {
 	 * @param from_date of reference type Date
 	 * @param to_date of reference type Date
 	 */
-	public void updateTitle(int emp_no, String title, Date from_date, Date to_date);
+	public void updateTitleTitle(Title title, String newTitle);
+        public void updateTitleFromDate (Title title, Date newFromDate);
+        public void updateTitleToDate(Title title, Date newToDate);
 	/**
 	 * This method is used to delete a title from the title table
 	 * @param emp_no of type integer
 	 * @param from_date of reference type Date
 	 */
-	public void deleteTitle(int emp_no, Date from_date);
+	public void deleteTitle(Title title);
+        
+        public ResultSet getTitleByEmpNo (int emp_no);
 }

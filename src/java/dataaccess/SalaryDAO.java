@@ -2,6 +2,7 @@ package dataaccess;
 
 import java.sql.Date;
 import java.util.List;
+import java.sql.ResultSet;
 
 import transferobjects.Salary;
 /**
@@ -23,7 +24,7 @@ public interface SalaryDAO {
 	 * @param from_date of reference type Date
 	 * @param to_date of reference type Date
 	 */
-	public void addSalary(int emp_no, int salary, Date from_date, Date to_date);
+	public void addSalary(Salary salary);
 	/**
 	 * This method is used to update the salary table.
 	 * @param emp_no of type integer
@@ -31,13 +32,17 @@ public interface SalaryDAO {
 	 * @param from_date of reference type Date
 	 * @param to_date of reference type Date
 	 */
-	public void updateSalary(int emp_no, int salary, Date from_date, Date to_date);
+        public void updateSalarySalary(Salary salary, int newSalary);
+	public void updateSalaryFromDate(Salary salary,Date newFromDate );
+        public void updateSalaryToDate(Salary salary, Date newToDate);
 	/**
 	 * This method is used to delete from the salary table.
 	 * @param emp_no of type integer
 	 * @param from_date of reference type Date
 	 */
-	public void deleteSalary(int emp_no, Date from_date);
+	public void deleteSalary(Salary salary);
+        public ResultSet getSalaryByEmpID (int emp_no);
+        
 	//TODO: add deleteSalaryBy...
 
 }

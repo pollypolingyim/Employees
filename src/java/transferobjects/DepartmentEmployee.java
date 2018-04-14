@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class DepartmentEmployee {
 
-    private int dept_no;
+    private String dept_no;
     private int emp_no;
     private Date from_date;
     private Date to_date;
@@ -15,27 +15,27 @@ public class DepartmentEmployee {
     public static String COL_FROM_DATE = "from_date";
     public static String COL_TO_DATE = "to_date";
 
-    public DepartmentEmployee(int dept_no, int emp_no, Date from_date, Date to_date) {
+    public DepartmentEmployee(String dept_no, int emp_no, Date from_date, Date to_date) {
         this.dept_no = dept_no;
         this.emp_no = emp_no;
         this.from_date = from_date;
         this.to_date = to_date;
     }
 
-    public void setDept_no(int dept_no) {
+    public void setDept_no(String dept_no) {
         this.dept_no = dept_no;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + this.dept_no;
-        hash = 71 * hash + this.emp_no;
-        hash = 71 * hash + Objects.hashCode(this.from_date);
-        hash = 71 * hash + Objects.hashCode(this.to_date);
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.dept_no);
+        hash = 37 * hash + this.emp_no;
+        hash = 37 * hash + Objects.hashCode(this.from_date);
+        hash = 37 * hash + Objects.hashCode(this.to_date);
         return hash;
     }
-
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -67,7 +67,7 @@ public class DepartmentEmployee {
         this.emp_no = emp_no;
     }
 
-    public int getDept_no() {
+    public String getDept_no() {
         return dept_no;
     }
 
