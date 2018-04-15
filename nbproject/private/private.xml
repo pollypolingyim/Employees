@@ -3,12 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/web/index.html</file>
-            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/dataaccess/DepartmentDAOImp.java</file>
-            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/dataaccess/DepartmentManagerDAOImp.java</file>
             <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/dataaccess/EmployeeDAOImp.java</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/dataaccess/DepartmentDAOImp.java</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/web/index.html</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/view/EmployeeAddForm.java</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/view/SalariesView.java</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/business/SalaryLogic.java</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/.gitignore</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/view/DepartmentAddForm.java</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/view/TitlesView.java</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/view/DepartmentsView.java</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/business/DepartmentLogic.java</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/business/EmployeeLogic.java</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/web/style.css</file>
             <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/dataaccess/DataSource.java</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/dataaccess/SalaryDAOImp.java</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/transferobjects/Employee.java</file>
+            <file>file:/C:/Users/kingselite/Documents/NetBeansProjects/Assignment3Prototype/src/java/dataaccess/DepartmentDAO.java</file>
         </group>
     </open-files>
 </project-private>

@@ -17,7 +17,8 @@ public interface TitleDAO {
 	 * @return List of generic type <Title>
 	 */
 	public List<Title> getAllTitles();
-
+        
+        public List<Title> getAllDistinctTitles();
 	/**
 	 * This method is used to add title to the Title table.
 	 * @param emp_no of type integer

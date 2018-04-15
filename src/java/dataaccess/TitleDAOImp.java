@@ -21,7 +21,8 @@ import transferobjects.Title;
  * @author Aleksandar Krumov
  */
 public class TitleDAOImp implements TitleDAO {
-     private static final String GET_ALL_TITLE = "SELECT emp_no, title, from_date, to_date FROM titles ORDER BY emp_no LIMIT 100";
+    private static final String GET_ALL_TITLE = "SELECT emp_no, title, from_date, to_date FROM titles ORDER BY emp_no LIMIT 100";
+    private static final String GET_ALL_DISTINCT_TITLE = "SELECT emp_no, title, from_date, to_date FROM titles GROUP BY title";
     private static final String INSERT_TITLE = "INSERT INTO titles (emp_no, title, from_date, to_date) VALUES(?, ?,?,?)";
     private static final String DELETE_TITLE = "DELETE FROM titles WHERE emp_no=?";
     private static final String UPDATE_TITLE_TITLE = "UPDATE titles SET title=? WHERE emp_no=?";
@@ -39,6 +40,55 @@ public class TitleDAOImp implements TitleDAO {
         try{
             con = DataSource.getConnection();
             pstmt = con.prepareStatement( GET_ALL_TITLE);
+            rs = pstmt.executeQuery();
+            titles= new ArrayList<>();
+            while( rs.next()){
+                title = new Title(
+                        rs.getInt(Title.COL_EMP_NO),
+                        rs.getString(Title.COL_TITLE),
+                        rs.getDate(Title.COL_FROM_DATE),
+                        rs.getDate(Title.COL_TO_DATE));
+                
+                titles.add(title);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TitleDAOImp.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return titles;
+    }
+    
+    @Override
+    public List<Title> getAllDistinctTitles() {
+        List<Title> titles = Collections.EMPTY_LIST;
+        Title title;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try{
+            con = DataSource.getConnection();
+            pstmt = con.prepareStatement( GET_ALL_DISTINCT_TITLE);
             rs = pstmt.executeQuery();
             titles= new ArrayList<>();
             while( rs.next()){

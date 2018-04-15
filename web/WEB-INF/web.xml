@@ -8,10 +8,6 @@
         <servlet-name>EmployeeAddForm</servlet-name>
         <servlet-class>view.EmployeeAddForm</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>DepartmentAddForm</servlet-name>
-        <servlet-class>view.DepartmentAddForm</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>DepartmentEmployeesView</servlet-name>
         <url-pattern>/DepartmentEmployees</url-pattern>
@@ -59,10 +55,6 @@
     <servlet-mapping>
         <servlet-name>EmployeeAddForm</servlet-name>
         <url-pattern>/EmployeeAddForm</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DepartmentAddForm</servlet-name>
-        <url-pattern>/DepartmentAddForm</url-pattern>
     </servlet-mapping>
     <resource-ref>
         <description>DB Connection</description>

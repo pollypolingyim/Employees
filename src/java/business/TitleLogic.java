@@ -21,6 +21,10 @@ public class TitleLogic {
     public List<Title> getAllTitles() {
         return titleDAO.getAllTitles();
     }
+    
+    public List<Title> getAllDistinctTitles() {
+        return titleDAO.getAllDistinctTitles();
+    }
 
     public void addTitle(Title title) {
         cleanTitle(title);

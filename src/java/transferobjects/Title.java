@@ -23,9 +23,10 @@ public class Title {
         this.to_date = to_date;
     }
 
-    public Title(int emp_no, String title) {
+    public Title(int emp_no, String title, Date from_date) {
         this.emp_no = emp_no;
         this.title = title;
+        this.from_date = from_date;
     }
 
     public int getEmp_no() {
