@@ -16,9 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 import transferobjects.Title;
 
 /**
+ * This class builds the {@link Title} servlet view.
  *
  * @author Shariar Emami
  * @author Stanley Pieda
+ * @author Poli Yim
+ * @author Shawn Pottle
+ * @author Aleksandar Krumov
  */
 public class TitlesView extends HttpServlet {
 

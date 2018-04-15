@@ -15,8 +15,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * This class sets up the add employee view.
  *
- * @author kingselite
+ * @author Shariar Emami
+ * @author Stanley Pieda
+ * @author Poli Yim
+ * @author Shawn Pottle
+ * @author Aleksandar Krumov
  */
 public class EmployeeAddForm extends HttpServlet {
 

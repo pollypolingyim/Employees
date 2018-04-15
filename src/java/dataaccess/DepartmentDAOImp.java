@@ -12,8 +12,12 @@ import java.util.logging.Logger;
 import transferobjects.Department;
 
 /**
+ * This class implements the {@link DepartmentDAO} interface.
  *
- * @author Shawn
+ * @author Shawn Pottle
+ * @author Polly Yim
+ * @author Aleksandar Krumov
+ *
  */
 public class DepartmentDAOImp implements DepartmentDAO {
 
@@ -44,7 +48,7 @@ public class DepartmentDAOImp implements DepartmentDAO {
             departments = new ArrayList<>(100);
             while (rs.next()) {
                 dept = new Department(
-                        rs.getString(Department.COL_DEPT_NO), 
+                        rs.getString(Department.COL_DEPT_NO),
                         rs.getString(Department.COL_DEPT_NAME));
                 departments.add(dept);
             }
@@ -76,31 +80,66 @@ public class DepartmentDAOImp implements DepartmentDAO {
         return departments;
     }
 
+    /**
+     * This method overrides the {@link Department} addDepartment method.
+     *
+     * @param department of type {@link Department}
+     */
     @Override
     public void addDepartment(Department department) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * This method overrides the {@link Department} updateDepartment method.
+     *
+     * @param department of type {@link Department}
+     * @param newDeptName of type String
+     */
     @Override
     public void updateDepartment(Department department, String newDeptName) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * This method overrides the {@link Department} deleteDepartmentByDeptNo
+     * method.
+     *
+     * @param dept_no of type integer
+     */
     @Override
     public void deleteDepartmentByDeptNo(int dept_no) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * This method overrides the {@link Department} deleteDepartmentByDeptNo
+     * method.
+     *
+     * @param dept_name of type integer
+     */
     @Override
     public void deleteDepartmentByDeptName(String dept_name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * This method overrides the {@link Department} getDepartmentByID method.
+     *
+     * @param dept_no of type integer
+     * @return ResultSet
+     */
     @Override
     public ResultSet getDepartmentByID(int dept_no) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * This method overrides the {@link Department} getDepartmentByName method.
+     *
+     * @param dept_name of type integer
+     * @return ResultSet
+     */
     @Override
     public ResultSet getDepartmentByName(String dept_name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

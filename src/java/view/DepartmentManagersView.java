@@ -14,17 +14,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import transferobjects.DepartmentEmployee;
+import transferobjects.DepartmentManager;
 
 /**
+ * This class sets up the {@link DepartmentManager} view
  *
  * @author Shariar Emami
  * @author Stanley Pieda
+ * @author Poly Yim
+ * @author Shawn Pottle
+ * @author Aleksandar Krumov
+ *
  */
 public class DepartmentManagersView extends HttpServlet {
 
- 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -38,7 +44,7 @@ public class DepartmentManagersView extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Department Managers</title>");            
+            out.println("<title>Department Managers</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Department Managers View at " + request.getContextPath() + "</h1>");
@@ -51,9 +57,9 @@ public class DepartmentManagersView extends HttpServlet {
             out.println("<td>From Date</td>");
             out.println("<td>To Date</td>");
             out.println("</tr>");
-            for(DepartmentEmployee departmentEmployee : departmentEmployees){
-                out.printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", departmentEmployee.getEmp_no(), 
-                        departmentEmployee.getDept_no(),departmentEmployee.getFrom_date(),
+            for (DepartmentEmployee departmentEmployee : departmentEmployees) {
+                out.printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", departmentEmployee.getEmp_no(),
+                        departmentEmployee.getDept_no(), departmentEmployee.getFrom_date(),
                         departmentEmployee.getTo_date());
             }
             out.println("</table>");
