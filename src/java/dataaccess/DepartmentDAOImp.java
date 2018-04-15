@@ -18,7 +18,7 @@ import transferobjects.Department;
 public class DepartmentDAOImp implements DepartmentDAO {
 
     private static final String GET_ALL_DEPARTMENTS = "SELECT dept_no, dept_name FROM Departments ORDER BY dept_no LIMIT 100";
-    private static final String INSERT_DEPARTMENTS = "INSERT INTO Departments (dept_no, dept_dept_name) VALUES(?, ?)";
+    private static final String INSERT_DEPARTMENTS = "INSERT INTO Departments (dept_no, dept_name) VALUES(?, ?)";
     private static final String DELETE_DEPARTMENTS_BY_ID = "DELETE FROM Departments WHERE dept_no = ?";
     private static final String DELETE_DEPARTMENTS_BY_NAME = "DELETE FROM Departments WHERE dept_name=?";
     private static final String UPDATE_DEPARTMENTS = "UPDATE Departments SET dept_name = ? WHERE dept_no = ?";
@@ -78,7 +78,14 @@ public class DepartmentDAOImp implements DepartmentDAO {
 
     @Override
     public void addDepartment(Department department) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try( Connection con = DataSource.getConnection();
+                PreparedStatement pstmt = con.prepareStatement( INSERT_DEPARTMENTS);){
+            pstmt.setString(1, department.getDept_no()+"");
+            pstmt.setString(2, department.getDept_name()+"");
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeeDAOImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

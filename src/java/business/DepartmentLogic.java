@@ -17,6 +17,7 @@ public class DepartmentLogic {
     }
 
     public List<Department> getAllDepartments() {
+        
         return departmentDAO.getAllDepartments();
     }
 

@@ -84,10 +84,11 @@ public class EmployeeDAOImp implements EmployeeDAO {
         try( Connection con = DataSource.getConnection();
                 PreparedStatement pstmt = con.prepareStatement( INSERT_EMPLOYEES);){
             pstmt.setString(1, employee.getEmp_no()+"");
-            pstmt.setString(2, employee.getFirst_name());
-            pstmt.setString(3, employee.getLast_name());
-            pstmt.setString(4, employee.getGender()+"");
-            pstmt.setString(5, employee.getHire_date()+"");
+            pstmt.setString(2, employee.getBirth_date()+"");
+            pstmt.setString(3, employee.getFirst_name());
+            pstmt.setString(4, employee.getLast_name());
+            pstmt.setString(5, employee.getGender()+"");
+            pstmt.setString(6, employee.getHire_date()+"");
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(EmployeeDAOImp.class.getName()).log(Level.SEVERE, null, ex);

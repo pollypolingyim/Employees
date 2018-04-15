@@ -41,6 +41,7 @@ public class SalariesView extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Salaries View at " + request.getContextPath() + "</h1>");
+            out.println("<aside>Hello</aside><article>");
             SalaryLogic logic = new SalaryLogic();
             List<Salary> salaries = logic.getAllSalaries();
             out.println("<table border=\"1\">");
@@ -54,7 +55,7 @@ public class SalariesView extends HttpServlet {
                 out.printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", salary.getEmp_no(), 
                         salary.getSalary(),salary.getFrom_date(), salary.getTo_date());
             }
-            out.println("</table>");
+            out.println("</table></article>");
             out.println("</body>");
             out.println("</html>");
         }

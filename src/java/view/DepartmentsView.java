@@ -45,12 +45,13 @@ public class DepartmentsView extends HttpServlet {
             List<Department> departments = logic.getAllDepartments();
             out.println("<table border=\"1\">");
             out.println("<tr>");
-            out.println("<td>Department Number</td>");
-            out.println("<td>Department Name</td>");
+            out.println("<td>"+Department.COL_DEPT_NO+"</td>");
+            out.println("<td>"+Department.COL_DEPT_NAME+"</td>");
             out.println("</tr>");
             for(Department dept : departments){
                 out.printf("<tr><td>%s</td><td>%s</td></tr>", dept.getDept_no(), dept.getDept_name());
             }
+            
             out.println("</table>");
             out.println("</body>");
             out.println("</html>");

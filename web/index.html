@@ -1,23 +1,51 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>Assignment3</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
-        <div><a href="Departments">See Departments using Servlet</a><br><br>
-            <a href="Employees">See Employees using Servlet</a><br><br>
-            <a href="Titles">See Titles using Servlet</a><br><br>
-            <a href="Salaries">See Salaries using Servlet</a><br><br>
-            <a href="DepartmentManagers">See Department Managers using Servlet</a><br><br>
-            <a href="DepartmentEmployees">See Department Employees using Servlet</a><br><br><br><br>
-            <a href="EmployeeAddForm">See EmployeeAddForm using Servlet</a>
-    </div>
+    <body class="row-container">
+        <div class="row">
+            <header>
+                <h3>Assignment3</h3>
+            </header>
+        </div>
+        <div class="row">
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn">Views</a>
+                        <div class="dropdown-content">
+                            <a href="Departments" target="frame">Departments</a>
+                            <a href="Employees" target="frame">Employees</a>
+                            <a href="Titles" target="frame">Titles</a>
+                            <a href="Salaries" target="frame">Salaries</a>
+                            <a href="DepartmentManagers" target="frame">Department Managers</a>
+                            <a href="DepartmentEmployees" target="frame">Department Employees</a>
+                            
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn">Forms</a>
+                        <div class="dropdown-content">
+                            <a href="EmployeeAddForm" target="frame">Add Employee</a>
+                            <a href="DepartmentAddForm" target="frame">Add Department</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="fill-row" >
+            <article >
+                <iframe name="frame" ></iframe>
+            </article>
+        </div>
+        <div class="row">
+            <footer>
+                <h4>Assignment3</h4>
+            </footer>
+        </div>
     </body>
 </html>

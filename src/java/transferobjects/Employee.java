@@ -6,8 +6,8 @@ import java.util.Objects;
 public class Employee {
 
     public enum Gender {
-        MALE,
-        FEMALE;
+        M,
+        F;
     }
     private int emp_no;
     private Date birth_date;
@@ -28,7 +28,7 @@ public class Employee {
         this.birth_date = birth_date;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.gender = gender.equals("M")?Gender.MALE:Gender.FEMALE;
+        this.gender = gender.equals("M")?Gender.M:Gender.F;
         this.hire_date = hire_date;
     }
 
@@ -69,7 +69,7 @@ public class Employee {
     }
 
     public void setGender(String gender) {
-        this.gender = gender.equals("M")?Gender.MALE:Gender.FEMALE;    
+        this.gender = gender.equals("M")?Gender.M:Gender.F;    
     }
 
     public Date getHire_date() {

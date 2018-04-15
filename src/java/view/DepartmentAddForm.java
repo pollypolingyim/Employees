@@ -5,7 +5,7 @@
  */
 package view;
 
-import business.EmployeeLogic;
+import business.DepartmentLogic;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -15,13 +15,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import transferobjects.Department;
 import transferobjects.Employee;
 
 /**
  *
  * @author kingselite
  */
-public class EmployeeAddForm extends HttpServlet {
+public class DepartmentAddForm extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +37,7 @@ public class EmployeeAddForm extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         if(request.getParameter("submit") != null) {
-            addEmployee(request.getParameterMap());
+            addDepartment(request.getParameterMap());
         }
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -44,21 +45,17 @@ public class EmployeeAddForm extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Employee Add Form</title>");
+            out.println("<title>Department Add Form</title>");
             out.println("</head>");
             out.println("<body>");
             if(request.getParameter("submit") != null) {
-                out.println("Employee Added!");
+                out.println("Department Added!");
             }
             out.println("<form action=\"\" method=\"post\">");
-            out.println("First name:<br>");
-            out.println("<input type=\"text\" name=\"firstname\" required><br>");
-            out.println("Last name:<br>");
-            out.println("<input type=\"text\" name=\"lastname\" required><br><br>");
-            out.println("<input type=\"date\" name=\"birthdate\" min=\"1900-01-01\" max=\"2007-12-30\" required><br><br>");
-            out.println("<input type=\"radio\" name=\"gender\" value=\"M\" checked> Male<br>");
-            out.println("<input type=\"radio\" name=\"gender\" value=\"F\"> Female<br>");
-            out.println("<input type=\"date\" name=\"hiredate\" min=\"1900-01-01\" max=\"2007-12-30\" required><br><br>");
+            out.println("Department Number:<br>");
+            out.println("<input type=\"text\" name=\"dept_no\" required><br>");
+            out.println("Department Name:<br>");
+            out.println("<input type=\"text\" name=\"dept_name\" required><br><br>");
             out.println("<input type=\"submit\" name=\"submit\" value=\"Submit\">");
             out.println("</form>");
             out.println("<pre>");
@@ -78,17 +75,13 @@ public class EmployeeAddForm extends HttpServlet {
         return builder.toString();
     }
     
-    private void addEmployee(Map<String, String[]> values) {
-        EmployeeLogic logic = new EmployeeLogic();
-        Employee employee = new Employee(
-                0,
-                Date.valueOf(values.get("birthdate")[0]),
-                values.get("firstname")[0],
-                values.get("lastname")[0],
-                values.get("gender")[0],
-                Date.valueOf(values.get("hiredate")[0]));
+    private void addDepartment(Map<String, String[]> values) {
+        DepartmentLogic logic = new DepartmentLogic();
+        Department department = new Department(
+                values.get("dept_no")[0],
+                values.get("dept_name")[0]);
 
-        logic.addEmployee(employee);
+        logic.addDepartment(department);
     }
 
    

@@ -43,8 +43,8 @@ public class SalaryDAOImp implements SalaryDAO {
             salaries= new ArrayList<>();
             while( rs.next()){
                 salary = new Salary(
-                        rs.getInt(Salary.COL_SALARY),
                         rs.getInt(Salary.COL_EMP_NO),
+                        rs.getInt(Salary.COL_SALARY),
                         rs.getDate(Salary.COL_FROM_DATE),
                         rs.getDate(Salary.COL_TO_DATE));
                 
