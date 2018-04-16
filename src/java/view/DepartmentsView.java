@@ -16,14 +16,19 @@ import javax.servlet.http.HttpServletResponse;
 import transferobjects.Department;
 
 /**
+ * This class sets up the {@link Department} view.
  *
  * @author Shariar Emami
  * @author Stanley Pieda
+ * @author Poli Yim
+ * @author Shawn Pottle
+ * @author Aleksandar Krumov
  */
 public class DepartmentsView extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -37,7 +42,7 @@ public class DepartmentsView extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Departments</title>");            
+            out.println("<title>Departments</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Departments View at " + request.getContextPath() + "</h1>");
@@ -48,7 +53,7 @@ public class DepartmentsView extends HttpServlet {
             out.println("<td>"+Department.COL_DEPT_NO+"</td>");
             out.println("<td>"+Department.COL_DEPT_NAME+"</td>");
             out.println("</tr>");
-            for(Department dept : departments){
+            for (Department dept : departments) {
                 out.printf("<tr><td>%s</td><td>%s</td></tr>", dept.getDept_no(), dept.getDept_name());
             }
             

@@ -5,8 +5,10 @@ import java.util.List;
 import java.sql.ResultSet;
 
 import transferobjects.Title;
+
 /**
  * This is an interface for the Title DAO
+ *
  * @author Shawn Pottle
  * @author Polly Yim
  * @author Aleksandar Krumov

@@ -16,14 +16,19 @@ import javax.servlet.http.HttpServletResponse;
 import transferobjects.Employee;
 
 /**
+ * This class builds the {@link Employee} servlet view.
  *
  * @author Shariar Emami
  * @author Stanley Pieda
+ * @author Poli Yim
+ * @author Shawn Pottle
+ * @author Aleksandar Krumov
  */
 public class EmployeesView extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -37,7 +42,7 @@ public class EmployeesView extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Employees</title>");            
+            out.println("<title>Employees</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Employees View at " + request.getContextPath() + "</h1>");
@@ -52,10 +57,10 @@ public class EmployeesView extends HttpServlet {
             out.println("<td>Gender</td>");
             out.println("<td>Hire Date</td>");
             out.println("</tr>");
-            for(Employee employee : employees){
-                out.printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", 
+            for (Employee employee : employees) {
+                out.printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>",
                         employee.getEmp_no(), employee.getBirth_date(), employee.getFirst_name(),
-                        employee.getLast_name(),employee.getGender(), employee.getHire_date());
+                        employee.getLast_name(), employee.getGender(), employee.getHire_date());
             }
             out.println("</table>");
             out.println("</body>");

@@ -14,8 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * This class builds an About servlet with the team members names.
  *
- * @author lefti
+ * @author Shariar Emami
+ * @author Stanley Pieda
+ * @author Poli Yim
+ * @author Shawn Pottle
+ * @author Aleksandar Krumov
  */
 @WebServlet(name = "About", urlPatterns = {"/About"})
 public class About extends HttpServlet {
@@ -37,7 +42,7 @@ public class About extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet About</title>");            
+            out.println("<title>Servlet About</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>About the team" + request.getContextPath() + "</h1>");
