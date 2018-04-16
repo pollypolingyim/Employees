@@ -8,24 +8,33 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import transferobjects.DepartmentManager;
 
 /**
  * This class implements the {@link DepartmentManagerDAO} interface.
+ *
  * @author Shawn Pottle
  * @author Polly Yim
- * @author Aleksandar Krumov 
+ * @author Aleksandar Krumov
  */
 public class DepartmentManagerDAOImp implements DepartmentManagerDAO {
-   private static final String GET_ALL_DEPARTMENT_MANAGER = "SELECT emp_no, dept_no, from_date, to_date FROM dept_emp ORDER BY dept_no, emp_no";
+
+    private static final String GET_ALL_DEPARTMENT_MANAGER = "SELECT emp_no, dept_no, from_date, to_date FROM dept_emp ORDER BY emp_no LIMIT 100";
     private static final String INSERT_DEPARTMENT_MANAGER = "INSERT INTO dept_manager (emp_no, dept_no, from_date, to_date) VALUES(?, ?,?,?)";
     private static final String DELETE_DEPARTMENT_MANAGER = "DELETE FROM dept_manager WHERE dept_no = ? AND emp_no=?";
     private static final String UPDATE_DEPARTMENT_MANAGER_FROM_DATE = "UPDATE dept_manager SET from_date = ?  WHERE dept_no = ? AND emp_no=?";
-    private static final String UPDATE_DEPARTMENT_MANAGER_TO_DATE="UPDATE dept_manager SET to_date=? WHERE dept_no=? AND emp_no=?";
+    private static final String UPDATE_DEPARTMENT_MANAGER_TO_DATE = "UPDATE dept_manager SET to_date=? WHERE dept_no=? AND emp_no=?";
     private static final String GET_BY_DEPARTMENT_ID_DEPARTMENT_MANAGER = "SELECT dept_no, dept_name, from_date, to_date FROM dept_emp WHERE dept_no = ?";
-    private static final String GET_BY_EMP_ID_DEPARTMENT_MANAGER="SELECT dept_no, dept_name, from_date, to_date FROM dept_emp WHERE emp_no=?";
-    
+    private static final String GET_BY_EMP_ID_DEPARTMENT_MANAGER = "SELECT dept_no, dept_name, from_date, to_date FROM dept_emp WHERE emp_no=?";
+
+    /**
+     * Overriden {@link DepartmentManagerDAO} getAllDepartmentManagers method.
+     *
+     * @return List of {@link DepartmentManager}
+     */
     @Override
     public List<DepartmentManager> getAllDepartmentManagers() {
         List<DepartmentManager> departmentManagers = Collections.EMPTY_LIST;
@@ -33,19 +42,18 @@ public class DepartmentManagerDAOImp implements DepartmentManagerDAO {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        try{
-            DataSource ds = new DataSource();
-            con = ds.createConnection();
-            pstmt = con.prepareStatement( GET_ALL_DEPARTMENT_MANAGER);
+        try {
+            con = DataSource.getConnection();
+            pstmt = con.prepareStatement(GET_ALL_DEPARTMENT_MANAGER);
             rs = pstmt.executeQuery();
-            departmentManagers= new ArrayList<>();
-            while( rs.next()){
-                departmentManager = new DepartmentManager();
-                departmentManager.setDept_no( rs.getString("dept_no"));
-                departmentManager.setEmp_no( rs.getInt("emp_no"));
-                departmentManager.setFrom_date(rs.getDate("from_date"));
-                departmentManager.setTo_date(rs.getDate("to_date"));
-                
+            departmentManagers = new ArrayList<>();
+            while (rs.next()) {
+                departmentManager = new DepartmentManager(
+                        rs.getInt("emp_no"),
+                        rs.getString("dept_no"),
+                        rs.getDate("from_date"),
+                        rs.getDate("to_date"));
+
                 departmentManagers.add(departmentManager);
             }
         } catch (SQLException ex) {
@@ -76,86 +84,118 @@ public class DepartmentManagerDAOImp implements DepartmentManagerDAO {
         return departmentManagers;
     }
 
-   @Override
-    public void addDepartmentManager(DepartmentManager departmentManager) {
-        try( Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement( INSERT_DEPARTMENT_MANAGER);){
-            pstmt.setString(1, departmentManager.getEmp_no()+"");
-            pstmt.setString(2, departmentManager.getDept_no()+"");
-            pstmt.setString(3, departmentManager.getFrom_date()+"");
-            pstmt.setString(4, departmentManager.getTo_date()+"");
-            pstmt.executeUpdate();
-        } catch (SQLException ex) {
-            //Logger.getLogger(DepartmentManagerDAOImpl.class.getDept_name()).log(Level.SEVERE, null, ex);
-        } 
-        
-    }
-    
-    @Override
-    public void updateDepartmentManagerFromDate(DepartmentManager departmentManager, Date newFromDate){
-        try( Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement( UPDATE_DEPARTMENT_MANAGER_FROM_DATE);){
-            pstmt.setString(1, newFromDate+"");
-            pstmt.setString(2,departmentManager.getDept_no()+"");
-            pstmt.setString(3, departmentManager.getEmp_no()+"");
-            pstmt.executeUpdate();
-        } catch (SQLException ex) {
-            //Logger.getLogger(DepartmentManagerDAOImpl.class.getDept_name()).log(Level.SEVERE, null, ex);
-        } 
-    }
-    
-    @Override
-    public void updateDepartmentManagerToDate(DepartmentManager departmentManager, Date newToDate){
-        try( Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement( UPDATE_DEPARTMENT_MANAGER_TO_DATE);){
-            pstmt.setString(1, newToDate+"");
-            pstmt.setString(2,departmentManager.getDept_no()+"");
-            pstmt.setString(3, departmentManager.getEmp_no()+"");
-            pstmt.executeUpdate();
-        } catch (SQLException ex) {
-            //Logger.getLogger(DepartmentManagerDAOImpl.class.getDept_name()).log(Level.SEVERE, null, ex);
-        } 
-    }
-    
     /**
-     * This method is used to delete departments by department number.
-     * @param dept_no of type integer
+     * Overridden {@link DepartmentManagerDAO} addDepartmentManager method.
+     *
+     * @param departmentManager of type {@link DepartmentManager}
      */
     @Override
-    public void deleteDepartmentManager(DepartmentManager departmentManager){
-        try( Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement( DELETE_DEPARTMENT_MANAGER);){
-            pstmt.setString(1, departmentManager.getDept_no()+"");
-            pstmt.setString(2, departmentManager.getEmp_no()+"");
+    public void addDepartmentManager(DepartmentManager departmentManager) {
+        try (Connection con = DataSource.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(INSERT_DEPARTMENT_MANAGER);) {
+            pstmt.setString(1, departmentManager.getEmp_no() + "");
+            pstmt.setString(2, departmentManager.getDept_no() + "");
+            pstmt.setString(3, departmentManager.getFrom_date() + "");
+            pstmt.setString(4, departmentManager.getTo_date() + "");
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             //Logger.getLogger(DepartmentManagerDAOImpl.class.getDept_name()).log(Level.SEVERE, null, ex);
-        }         
+        }
+
     }
-    
-   
-    
+
+    /**
+     * Overridden {@link DepartmentManagerDAO} updateDepartmentManagerFromDate
+     * method.
+     *
+     * @param departmentManager of type {@link DepartmentManager}
+     * @param newFromDate of type Date
+     */
     @Override
-    public ResultSet getDepartmentManagerByDeptID (int dept_no){
-        try( Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement( GET_BY_DEPARTMENT_ID_DEPARTMENT_MANAGER);){
-            pstmt.setString(1, dept_no+"");
-            return pstmt.executeQuery();
+    public void updateDepartmentManagerFromDate(DepartmentManager departmentManager, Date newFromDate) {
+        try (Connection con = DataSource.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(UPDATE_DEPARTMENT_MANAGER_FROM_DATE);) {
+            pstmt.setString(1, newFromDate + "");
+            pstmt.setString(2, departmentManager.getDept_no() + "");
+            pstmt.setString(3, departmentManager.getEmp_no() + "");
+            pstmt.executeUpdate();
         } catch (SQLException ex) {
             //Logger.getLogger(DepartmentManagerDAOImpl.class.getDept_name()).log(Level.SEVERE, null, ex);
-        } 
+        }
+    }
+
+    /**
+     * Overridden {@link DepartmentManagerDAO} updateDepartmentManagerToDate
+     * method.
+     *
+     * @param departmentManager of type {@link DepartmentManager}
+     * @param newToDate of type Date
+     */
+    @Override
+    public void updateDepartmentManagerToDate(DepartmentManager departmentManager, Date newToDate) {
+        try (Connection con = DataSource.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(UPDATE_DEPARTMENT_MANAGER_TO_DATE);) {
+            pstmt.setString(1, newToDate + "");
+            pstmt.setString(2, departmentManager.getDept_no() + "");
+            pstmt.setString(3, departmentManager.getEmp_no() + "");
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            //Logger.getLogger(DepartmentManagerDAOImpl.class.getDept_name()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Overridden {@link DepartmentManagerDAO} deleteDepartmentManager method.
+     *
+     * @param departmentManager of type {@link DepartmentManager}
+     */
+    @Override
+    public void deleteDepartmentManager(DepartmentManager departmentManager) {
+        try (Connection con = DataSource.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(DELETE_DEPARTMENT_MANAGER);) {
+            pstmt.setString(1, departmentManager.getDept_no() + "");
+            pstmt.setString(2, departmentManager.getEmp_no() + "");
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            //Logger.getLogger(DepartmentManagerDAOImpl.class.getDept_name()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Overridden {@link DepartmentManagerDAO} getDepartmentManagerByDeptID
+     * method.
+     *
+     * @param dept_no of type integer
+     * @return ResultSet
+     */
+    @Override
+    public ResultSet getDepartmentManagerByDeptID(int dept_no) {
+        try (Connection con = DataSource.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(GET_BY_DEPARTMENT_ID_DEPARTMENT_MANAGER);) {
+            pstmt.setString(1, dept_no + "");
+            return pstmt.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(DepartmentManagerDAOImp.class.getName()).log(Level.SEVERE, "", ex);
+        }
         return null;
     }
-    
+
+    /**
+     * Overridden {@link DepartmentManagerDAO} getDepartmentManagerByDeptID
+     * method.
+     *
+     * @param emp_no of type integer
+     * @return ResultSet
+     */
     @Override
-    public ResultSet getDepartmentManagerByEmpID (int emp_no){
-        try( Connection con = new DataSource().createConnection();
-                PreparedStatement pstmt = con.prepareStatement( GET_BY_EMP_ID_DEPARTMENT_MANAGER);){
-            pstmt.setString(1, emp_no+"");
+    public ResultSet getDepartmentManagerByEmpID(int emp_no) {
+        try (Connection con = DataSource.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(GET_BY_EMP_ID_DEPARTMENT_MANAGER);) {
+            pstmt.setString(1, emp_no + "");
             return pstmt.executeQuery();
         } catch (SQLException ex) {
             //Logger.getLogger(DepartmentManagerDAOImpl.class.getDept_name()).log(Level.SEVERE, null, ex);
-        } 
+        }
         return null;
     }
 }

@@ -16,14 +16,19 @@ import javax.servlet.http.HttpServletResponse;
 import transferobjects.Salary;
 
 /**
+ * This class builds the {@link Salary} servlet view.
  *
  * @author Shariar Emami
  * @author Stanley Pieda
+ * @author Poli Yim
+ * @author Shawn Pottle
+ * @author Aleksandar Krumov
  */
 public class SalariesView extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -37,10 +42,11 @@ public class SalariesView extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Salaries</title>");            
+            out.println("<title>Salaries</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Salaries View at " + request.getContextPath() + "</h1>");
+            out.println("<aside>Hello</aside><article>");
             SalaryLogic logic = new SalaryLogic();
             List<Salary> salaries = logic.getAllSalaries();
             out.println("<table border=\"1\">");
@@ -50,11 +56,11 @@ public class SalariesView extends HttpServlet {
             out.println("<td>From Date</td>");
             out.println("<td>To Date</td>");
             out.println("</tr>");
-            for(Salary salary : salaries){
-                out.printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", salary.getEmp_no(), 
-                        salary.getSalary(),salary.getFrom_date(), salary.getTo_date());
+            for (Salary salary : salaries) {
+                out.printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", salary.getEmp_no(),
+                        salary.getSalary(), salary.getFrom_date(), salary.getTo_date());
             }
-            out.println("</table>");
+            out.println("</table></article>");
             out.println("</body>");
             out.println("</html>");
         }

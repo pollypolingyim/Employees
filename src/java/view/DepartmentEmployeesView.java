@@ -16,14 +16,19 @@ import javax.servlet.http.HttpServletResponse;
 import transferobjects.DepartmentEmployee;
 
 /**
+ * This class builds the {@link DepartmentEmployee} servlet.
  *
  * @author Shariar Emami
  * @author Stanley Pieda
+ * @author Poli Yim
+ * @author Shawn Pottle
+ * @author Aleksandar Krumov
  */
 public class DepartmentEmployeesView extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -37,7 +42,7 @@ public class DepartmentEmployeesView extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Department Employees</title>");            
+            out.println("<title>Department Employees</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Department Employees View at " + request.getContextPath() + "</h1>");
@@ -50,9 +55,9 @@ public class DepartmentEmployeesView extends HttpServlet {
             out.println("<td>From Date</td>");
             out.println("<td>To Date</td>");
             out.println("</tr>");
-            for(DepartmentEmployee departmentEmployee : departmentEmployees){
-                out.printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", departmentEmployee.getEmp_no(), 
-                        departmentEmployee.getDept_no(),departmentEmployee.getFrom_date(),
+            for (DepartmentEmployee departmentEmployee : departmentEmployees) {
+                out.printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", departmentEmployee.getEmp_no(),
+                        departmentEmployee.getDept_no(), departmentEmployee.getFrom_date(),
                         departmentEmployee.getTo_date());
             }
             out.println("</table>");

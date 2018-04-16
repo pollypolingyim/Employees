@@ -5,8 +5,10 @@ import java.util.List;
 import java.sql.ResultSet;
 
 import transferobjects.Title;
+
 /**
  * This is an interface for the Title DAO
+ *
  * @author Shawn Pottle
  * @author Polly Yim
  * @author Aleksandar Krumov
@@ -17,7 +19,8 @@ public interface TitleDAO {
 	 * @return List of generic type <Title>
 	 */
 	public List<Title> getAllTitles();
-
+        
+        public List<Title> getAllDistinctTitles();
 	/**
 	 * This method is used to add title to the Title table.
 	 * @param emp_no of type integer
